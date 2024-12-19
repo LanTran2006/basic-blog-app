@@ -49,7 +49,7 @@ A basic CRUD blog application that allows users to create, edit, delete, and vie
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/blog-app.git
+   git clone https://github.com/LanTran2006/basic-blog-app
    ```
 
 2. Navigate to the project directory:
