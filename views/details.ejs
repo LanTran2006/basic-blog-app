@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= post.title %></title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <%- include('includes/navbar.ejs') -%>
+
+  <main class="post-details container">
+    <h1><%= post.title %></h1>
+    <div class="meta">
+      <p>By: <%= post.author %></p>
+      <p>Category: <%= post.category %></p>
+      <p>Published on: <%= new Date(post.date).toLocaleDateString() %></p>
+    </div>
+    <% if (post.image) { %>
+        <img src="<%= post.image %>" alt="<%= post.title %>">
+      <% } else { %>
+        <img src="https://via.placeholder.com/600x400" alt="<%= post.title %>">
+      <% } %>
+    <div class="content">
+      <p><%= post.content %></p>
+    </div>
+    <a href="/" class="btn">Back to Home</a>
+  </main>
+
+  <%- include('includes/footer.ejs') -%>
+</body>
+</html>

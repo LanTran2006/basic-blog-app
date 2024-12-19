@@ -1,0 +1,63 @@
+<!-- views/add-blog.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Blog Post</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <!-- Include Navbar -->
+  <%- include('includes/navbar.ejs') -%>
+
+  <div class="add-blog-container">
+    <h1>Add a New Blog Post</h1>
+
+    <form action="/create" method="POST" enctype="multipart/form-data">
+      <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+      </div>
+      
+      <div>
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" rows="5" required></textarea>
+      </div>
+      
+      <div>
+        <label for="category">Category:</label>
+        <select id="category" name="category" required>
+          <option value="Lifestyle">Lifestyle</option>
+          <option value="Nutrition">Nutrition</option>
+          <option value="Exercise">Exercise</option>
+          <option value="Mental Health">Mental Health</option>
+          <option value="Technology">Technology</option>
+        </select>
+      </div>
+      
+      <div>
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required>
+      </div>
+      <button type="button" class="file-btn"><label for="image">Image:</label></button>
+      <input type="file" id="image" name="image" accept="image/*">
+       <img src="" alt="">
+      <div>
+        <button type="submit">Submit Post</button>
+      </div>
+    </form>
+  </div>
+   <script>
+      let input=document.querySelector('input[type="file"]');
+      input.addEventListener('change',(e)=>{
+        let img=input.nextElementSibling;
+        img.src=URL.createObjectURL(e.target.files[0]);
+          console.log(e.target.files[0],img);
+      })
+      
+   </script>
+  <!-- Include Footer -->
+  <%- include('includes/footer.ejs') -%>
+</body>
+</html>

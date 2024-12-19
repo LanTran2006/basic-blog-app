@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Post</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+  <%- include('includes/navbar.ejs') -%>
+  <div class="edit-blog-container">
+    <form action="/edit-post/<%= post.id %>" method="POST" enctype="multipart/form-data">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" value="<%= post.title %>" required>
+  
+      <label for="content">Content:</label>
+      <textarea id="content" name="content" required><%= post.content %></textarea>
+  
+      <label for="category">Category:</label>
+      <select id="category" name="category" required>
+        <option value="Health" <%= post.category === 'Health' ? 'selected' : '' %>>Health</option>
+        <option value="Nutrition" <%= post.category === 'Nutrition' ? 'selected' : '' %>>Nutrition</option>
+        <option value="Exercise" <%= post.category === 'Exercise' ? 'selected' : '' %>>Exercise</option>
+        <option value="Mental Health" <%= post.category === 'Mental Health' ? 'selected' : '' %>>Mental Health</option>
+      </select>
+  
+      <label for="author">Author:</label>
+      <input type="text" id="author" name="author" value="<%= post.author %>" required>
+      <button type="button" class="file-btn"><label for="image">Image:</label></button>
+      <input type="file" id="image" name="image">
+      <% if (post.image) { %>
+        <img src="<%= post.image %>" alt="<%= post.title %>">
+      <% } else { %>
+        <img src="https://via.placeholder.com/600x400" alt="<%= post.title %>">
+      <% } %>
+      <button type="submit">Save Changes</button>
+    </form>
+  </div>
+  <%- include('includes/footer.ejs') -%>
+  <script>
+   let input = document.querySelector('#image');
+  
+  input.addEventListener('change', (e) => {
+   let img = input.nextElementSibling; 
+    img.src = URL.createObjectURL(e.target.files[0]);  
+});
+
+ </script>
+</body>
+</html>

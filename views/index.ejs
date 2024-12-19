@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Blog Homepage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <%- include('includes/navbar.ejs') -%>
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to My Modern Blog</h1>
+            <p>Discover amazing articles and insights curated just for you.</p>
+            <a href="#" class="btn">Explore Now</a>
+        </div>
+    </section>
+   
+    <section class="search-bar container">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search blogs by title or content..."
+        />
+    </section>
+    <div class="add-blog-btn-container">
+      <a href="/create" class="add-blog-btn">Add Blog</a>
+    </div>
+    <section class="featured-posts container">
+      
+    <div class="sort-options">
+      <label for="sortSelect">Sort by:</label>
+      <select id="sortSelect">
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+      </select>
+    </div>
+      <div class="grid">
+        <% posts.forEach(post => { %>
+          <article data-id="<%= post.id %>" class="card" id="post-<%= post.id %>">
+            <% if (post.image) { %>
+              <img src="<%= post.image %>" alt="<%= post.title %>">
+            <% } else { %>
+              <img src="https://via.placeholder.com/600x400" alt="<%= post.title %>">
+            <% } %>
+            <h3><%= post.title %></h3>
+            <p><%= post.content %></p>
+            <small data-date="<%= post.date %>" ><%= new Date(post.date).toLocaleDateString('en-GB') %></small>
+            <div class="actions">
+              <a href="/edit-post/<%= post.id %>" class="btn edit-btn">Edit</a>
+              <button class="btn delete-btn" data-id="<%= post.id %>">Delete</button>
+            </div>
+            <a href="/posts/<%= post.id %>" class="link">Read More</a>
+          </article>
+        <% }); %>
+      </div>
+    </section>
+    
+    
+    
+    
+      
+    <%- include('includes/footer.ejs') -%>
+    <script src="/script.js"></script>
+</body>
+</html>
