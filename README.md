@@ -1,6 +1,6 @@
 # Blog App
 
-A modern and responsive blog application that allows users to create, edit, delete, and view blog posts. The app is powered by **Express.js**, uses **EJS** for templating, and integrates **JSON Server** for handling blog data. It also supports image uploads using **Multer**.
+A basic CRUD blog application that allows users to create, edit, delete, and view blog posts. The app is powered by **Express.js**, uses **EJS** for templating, and integrates **JSON Server** for handling blog data. It also supports image uploads using **Multer**.
 
 ---
 
